@@ -1,0 +1,9 @@
+site_name: GIS docs
+site_author: Sean Lawrence
+theme:
+  name: null
+  custom_dir: 'cinder'
+nav:
+  - DVRPC Enterprise GIS: intro.md
+  - Implementation: implementation.md
+  - Database: database.md
