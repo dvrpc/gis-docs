@@ -1,9 +1,13 @@
-site_name: GIS docs
+site_name: DVRPC Enterprise GIS
 site_author: Sean Lawrence
+site_description: "An overview of DVRPC's Enterprise GIS"
+repo_url: "https://github.com/dvrpc/gis-docs"
 theme:
   name: null
   custom_dir: 'cinder'
 nav:
-  - DVRPC Enterprise GIS: intro.md
+  - Home: intro.md
   - Implementation: implementation.md
   - Database: database.md
+  - ArcGIS Server: agserver.md
+  - ArcGIS Portal: portal.md
