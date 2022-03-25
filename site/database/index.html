@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An overview of DVRPC's Enterprise GIS">
+    <meta name="author" content="Sean Lawrence">
+    
+    <link rel="shortcut icon" href="../img/favicon.ico">
+
+    
+    <title>Database - DVRPC Enterprise GIS</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../css/base.min.css" rel="stylesheet">
+    <link href="../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="..">DVRPC Enterprise GIS</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../intro/">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../implementation/">Implementation</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">Database</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../agserver/">ArcGIS Server</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../portal/">ArcGIS Portal</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../implementation/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../agserver/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/dvrpc/gis-docs/edit/master/docs/database.md"><i class="fab fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#database-configuration">Database Configuration</a></li>
+            <li class="second-level"><a href="#schemas-and-roles">Schemas and Roles</a></li>
+                
+            <li class="second-level"><a href="#tablespaces">Tablespaces</a></li>
+                
+            <li class="second-level"><a href="#configuration-keywords">Configuration Keywords</a></li>
+                
+            <li class="second-level"><a href="#backup-and-recovery">Backup and Recovery</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h2 id="database-configuration">Database Configuration</h2>
+<p>The geodatabase is a PostgreSQL database with PostGIS geometry.  The database uses a ‘user-schema’ design.  Only the data owner for each schema can load/edit data.  DVRPC has created a schema for each data category and tablespace for each schema.  Each schema has a data owner user and data viewer user.  An SDE schema houses administrative tables.  There is also a planner_editor user that was created for versioned editing in any schema.  Installation and configuration of the geodatabase followed <a href="https://desktop.arcgis.com/en/arcmap/latest/manage-data/gdbs-in-postgresql/setup-geodatabase-postgresql-windows.htm#">ESRI documentation</a> closely.</p>
+<hr />
+<h3 id="schemas-and-roles">Schemas and Roles</h3>
+<p>List of schemas and their respective data owner and viewer user names</p>
+<ul>
+<li>Biota - biota, biota_viewer</li>
+<li>Boundaries - boundaries, boundaries_viewer</li>
+<li>Demographics - demographics, demographics_viewer</li>
+<li>Economy - economy, economy_viewer</li>
+<li>Environment - environment, environment_viewer</li>
+<li>Freight - freight, freight_viewer</li>
+<li>Geology - geology, geology_viewer</li>
+<li>Hydrography - hydrography, hydrography_viewer</li>
+<li>ImgElev - imgelev, imgelev_viewer</li>
+<li>Location - location, location_viewer</li>
+<li>Parcels - parcels, parcels_viewer</li>
+<li>Planning - planning, planning_viewer</li>
+<li>Structure - structure, structure_viewer</li>
+<li>Transportation - transportation, transportation_viewer</li>
+<li>Utilities - utilities, utilites_viewer</li>
+<li>SDE - sde</li>
+</ul>
+<p>Other users (dvrpc_viewer, planner_editor, postgres)</p>
+<p><code>dvrpc_viewer</code> has read-only permissions on all schemas in the GIS database.  Users can use this role to connect to the database using psql, python, r, QGIS, and other methods to query GIS data.</p>
+<hr />
+<h3 id="tablespaces">Tablespaces</h3>
+<p>Tablespaces are created for each schema and it's respective index.  See <a href="https://github.com/dvrpc/gis-admin/blob/main/database/recovery/create_tablespace_dir.bat">create_tablespace.bat</a> for details</p>
+<hr />
+<h3 id="configuration-keywords">Configuration Keywords</h3>
+<p>Configuration parameters identify a database object to be configured. Their corresponding values identify how the object will be stored in the database. The parameters and their configuration strings are grouped together by configuration keywords.  An example of DVRPC's configuration keywords can be found <a href="https://github.com/dvrpc/gis-admin/blob/9b2dd69647ce451abb53f03d95c82ffa858db28c/database/configs.txt#L52">here</a></p>
+<p>More details about these keywords can be found <a href="https://desktop.arcgis.com/en/arcmap/latest/manage-data/gdbs-in-postgresql/configuration-parameters-postgresql.htm">here</a></p>
+<hr />
+<h3 id="backup-and-recovery">Backup and Recovery</h3>
+<p>A backup script runs on gis-db Sundays to ensure optimal data recovery and backups over 30 days are removed.  GIS data is not updated frequently enough to warrant daily backups.</p>
+<ul>
+<li>backup script location on <code>gis-db</code>: C:\Setup\backup.bat</li>
+<li>backups are stored at: \\dvrpc-filesrv03\GIS_DB$</li>
+</ul>
+<p><a href="https://github.com/dvrpc/gis-admin/blob/main/database/backup/backup.bat">backup.bat on Github</a></p>
+<p>Recovery can be automated using GIS_DB.py.  This script first runs a bat file to create tablespace folders on the server.  Then sql is used to create the db, create the postgis extension, and create roles/schemas.  Then a bat file is used to restore the db from a backup.  Public schema first, sde schema second, and rest last.  This follows <a href="https://desktop.arcgis.com/en/arcmap/latest/manage-data/gdbs-in-postgresql/restore-geodatabase-postgresql.htm">ESRI best practice</a> for geodatabase recovery </p>
+<p><a href="https://github.com/dvrpc/gis-admin/tree/main/database/recovery">Recovery Scripts on Github</a></p></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = ".."</script>
+    
+    <script src="../js/base.js"></script>
+    <script src="../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
