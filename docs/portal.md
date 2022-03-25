@@ -32,3 +32,8 @@ Once the content is added:
 - Share your *feature services only* to their respective category group including the groups setup for open data portal syncing
 
 ![ ](img/groupshare.png "Share")
+
+---
+## License Server
+
+Our ArcGIS License Server is installed on `gis-portal`.  We use a [provision file](https://github.com/dvrpc/gis-admin/blob/main/agportal/license_server/ARCGIS.opt) to assign specific licenses to groups/individuals.

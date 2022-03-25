@@ -4,7 +4,7 @@ DVRPC has implemented five of these components on four internal virtual machines
 
 - `gis-db`: PostgreSQL, ArcGIS Data Store
 - `gis-server`: ArcGIS Server (hosting server for Portal, federated), ArcGIS Web Adaptor
-- `gis-portal`: ArcGIS Portal, ArcGIS Web Adaptor
+- `gis-portal`: ArcGIS Portal, ArcGIS Web Adaptor, ArcGIS License Server
 - `web-06`: 2 ArcGIS Web Adaptors
     - gis-portal Web Adaptor named 'dvrpc'
     - gis-server Web Adaptor named 'portal'
