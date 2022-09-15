@@ -135,6 +135,8 @@
             <li class="second-level"><a href="#datastores-and-syncing-content-from-the-gis-database">Datastores and Syncing Content from the GIS Database</a></li>
                 
         <li class="first-level "><a href="#license-server">License Server</a></li>
+            <li class="second-level"><a href="#backup">Backup</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -162,7 +164,17 @@
 <p><img alt=" " src="../img/groupshare.png" title="Share" /></p>
 <hr />
 <h2 id="license-server">License Server</h2>
-<p>Our ArcGIS License Server is installed on <code>gis-portal</code>.  We use a <a href="https://github.com/dvrpc/gis-admin/blob/main/agportal/license_server/ARCGIS.opt">provision file</a> to assign specific licenses to groups/individuals.</p></div>
+<p>Our ArcGIS License Server is installed on <code>gis-portal</code>.  We use a <a href="https://github.com/dvrpc/gis-admin/blob/main/agportal/license_server/ARCGIS.opt">provision file</a> to assign specific licenses to groups/individuals.</p>
+<hr />
+<h3 id="backup">Backup</h3>
+<p>A backup script runs on gis-portal Sundays to ensure optimal data recovery and backups over 30 days are removed.</p>
+<ul>
+<li>backup python script location on <code>gis-portal</code>: C:\gis-admin\agportal\backup.py</li>
+<li>backup batch script location on <code>gis-portal</code>: C:\gis-admin\agportal\backup.bat</li>
+<li>backups are stored at: \\dvrpc-filesrv03\GIS_PORTAL$</li>
+</ul>
+<p><a href="https://github.com/dvrpc/gis-admin/blob/main/agportal/backup.py">backup.py on Github</a>
+<a href="https://github.com/dvrpc/gis-admin/blob/main/agportal/backup.bat">backup.bat on Github</a></p></div>
         
         
     </div>
