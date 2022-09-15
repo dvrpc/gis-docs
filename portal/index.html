@@ -130,13 +130,13 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="first-level active"><a href="#arcgis-portal-configuration">ArcGIS Portal Configuration</a></li>
+            <li class="second-level"><a href="#backup">Backup</a></li>
+                
             <li class="second-level"><a href="#user-accounts-and-security">User Accounts and Security</a></li>
                 
             <li class="second-level"><a href="#datastores-and-syncing-content-from-the-gis-database">Datastores and Syncing Content from the GIS Database</a></li>
                 
         <li class="first-level "><a href="#license-server">License Server</a></li>
-            <li class="second-level"><a href="#backup">Backup</a></li>
-                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -144,6 +144,16 @@
 <h2 id="arcgis-portal-configuration">ArcGIS Portal Configuration</h2>
 <p>DVRPC followed a pretty standard installation and configuration proceedure for our ArcGIS Portal.</p>
 <p>ESRI documentation for ArcGIS Portal installation can be found <a href="https://enterprise.arcgis.com/en/portal/latest/install/windows/installing-portal-for-arcgis.htm">here</a></p>
+<hr />
+<h3 id="backup">Backup</h3>
+<p>A backup script runs on gis-portal Sundays to ensure optimal data recovery and backups over 30 days are removed.</p>
+<ul>
+<li>backup python script location on <code>gis-portal</code>: C:\gis-admin\agportal\backup.py</li>
+<li>backup batch script location on <code>gis-portal</code>: C:\gis-admin\agportal\backup.bat</li>
+<li>backups are stored at: \\dvrpc-filesrv03\GIS_PORTAL$</li>
+</ul>
+<p><a href="https://github.com/dvrpc/gis-admin/blob/main/agportal/backup.py">backup.py on Github</a></p>
+<p><a href="https://github.com/dvrpc/gis-admin/blob/main/agportal/backup.bat">backup.bat on Github</a></p>
 <hr />
 <h3 id="user-accounts-and-security">User Accounts and Security</h3>
 <p>Logins are managed through Microsoft Windows Active Directory.  DVRPC followed the following <a href="https://enterprise.arcgis.com/en/portal/latest/administer/windows/use-your-portal-with-ldap-and-portal-tier-authentication.htm">documentation</a> for implementation.</p>
@@ -164,17 +174,7 @@
 <p><img alt=" " src="../img/groupshare.png" title="Share" /></p>
 <hr />
 <h2 id="license-server">License Server</h2>
-<p>Our ArcGIS License Server is installed on <code>gis-portal</code>.  We use a <a href="https://github.com/dvrpc/gis-admin/blob/main/agportal/license_server/ARCGIS.opt">provision file</a> to assign specific licenses to groups/individuals.</p>
-<hr />
-<h3 id="backup">Backup</h3>
-<p>A backup script runs on gis-portal Sundays to ensure optimal data recovery and backups over 30 days are removed.</p>
-<ul>
-<li>backup python script location on <code>gis-portal</code>: C:\gis-admin\agportal\backup.py</li>
-<li>backup batch script location on <code>gis-portal</code>: C:\gis-admin\agportal\backup.bat</li>
-<li>backups are stored at: \\dvrpc-filesrv03\GIS_PORTAL$</li>
-</ul>
-<p><a href="https://github.com/dvrpc/gis-admin/blob/main/agportal/backup.py">backup.py on Github</a>
-<a href="https://github.com/dvrpc/gis-admin/blob/main/agportal/backup.bat">backup.bat on Github</a></p></div>
+<p>Our ArcGIS License Server is installed on <code>gis-portal</code>.  We use a <a href="https://github.com/dvrpc/gis-admin/blob/main/agportal/license_server/ARCGIS.opt">provision file</a> to assign specific licenses to groups/individuals.</p></div>
         
         
     </div>
