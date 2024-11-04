@@ -137,12 +137,12 @@
         <div class="col-md-9" role="main">
 
 <h2 id="arcgis-server-configuration">ArcGIS Server Configuration</h2>
-<p>DVRPC followed a pretty standard installation and configuration proceedure for our ArcGIS Server.  Initial configuration can be found on <code>gis-server</code> at <code>C:\serverconfig\serverconfig.xml</code>  </p>
+<p>DVRPC followed a pretty standard installation and configuration procedure for our ArcGIS Server.  Initial configuration can be found on <code>gis-server</code> at <code>C:\serverconfig\serverconfig.xml</code>  </p>
 <p>ESRI documentation for ArcGIS server installation can be found <a href="https://enterprise.arcgis.com/en/server/latest/install/windows/welcome-to-the-arcgis-for-server-install-guide.htm">here</a></p>
 <p>Our ArcGIS Server is federated with our ArcGIS Portal.  Federating an ArcGIS Server site with your Portal integrates the security and sharing models of your Portal with the ArcGIS Server site.</p>
 <hr />
 <h3 id="backup-and-recovery">Backup and Recovery</h3>
-<p>DVRPC uses the standard <a href="https://enterprise.arcgis.com/en/server/latest/develop/windows/backup-utility.htm">ESRI backup utility</a> for our ArcGIS server on an infrequent basis.  The only downfall to using this utility though is that it doesn't backup cache tiles and tiling schemes.  It's possible to modifiy the backup script to accomidate the cache located at <code>C:\arcgisserver\directories\arcgiscache</code></p>
+<p>DVRPC uses the standard <a href="https://enterprise.arcgis.com/en/server/latest/develop/windows/backup-utility.htm">ESRI backup utility</a> for our ArcGIS server on an infrequent basis.  The only downfall to using this utility though is that it doesn't backup cache tiles and tiling schemes.  It's possible to modify the backup script to accommodate the cache located at <code>C:\arcgisserver\directories\arcgiscache</code></p>
 <p><a href="https://github.com/dvrpc/gis-admin/tree/main/agserver">Backup and Recovery scripts</a></p></div>
         
         
