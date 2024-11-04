@@ -40,8 +40,7 @@ ArcGIS Server is federated with ArcGIS Portal and Windows Authentication is acti
 
 * Windows Server 2019 Standard on all servers
 
-* `gis-db` PostgreSQL 11.2, POSTGIS 2.5.1 
-(Esri support begins with ArcGIS 10.7.1 and ArcGIS Pro 2.4)
+* `gis-db` PostgreSQL 15.6, POSTGIS 3.4.1 
 Using PostGIS Geometry type
 User Schema (biota, freight, demographics, transportation, etc.)
 

@@ -11,7 +11,7 @@ A backup script runs on gis-portal Sundays to ensure optimal data recovery and b
 
 - backup python script location on `gis-portal`: C:\gis-admin\agportal\backup.py
 - backup batch script location on `gis-portal`: C:\gis-admin\agportal\backup.bat
-- backups are stored at: \\\dvrpc-filesrv03\GIS_PORTAL$
+- backups are stored at: \\\filesrv04\GIS_PORTAL$
 
 [backup.py on Github](https://github.com/dvrpc/gis-admin/blob/main/agportal/backup.py)
 
@@ -49,4 +49,4 @@ Once the content is added:
 ---
 ## License Server
 
-Our ArcGIS License Server is installed on `gis-portal`.  We use a [provision file](https://github.com/dvrpc/gis-admin/blob/main/agportal/license_server/ARCGIS.opt) to assign specific licenses to groups/individuals.
+Our ArcGIS License Server is installed on `gis-portal`.  We use a provision file located here: `C:\Program Files\ArcGIS\LicenseManager\bin` to assign specific licenses to groups/individuals.
